@@ -5,7 +5,13 @@ import { AlignCenterIcon } from 'lucide-vue-next';
 
 <template>
     <nav class="flex justify-between items-center border-2 border-red">
-        <a href="#">Logo</a>
+        <a href="#">
+            <!-- <NuxtImg
+            src="/public/images/rovel-Logo.svg"
+            alt="image file description"
+            /> -->
+            <img src="/public/images/rovel-Logo.svg" alt="rovel sub" width="45px">
+        </a>
         <ul class="flex">
             <li>Home</li>
             <li>Features</li>

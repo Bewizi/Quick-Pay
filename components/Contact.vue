@@ -4,18 +4,21 @@ import * as z from 'zod'
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
+  FormDescription,
   FormItem,
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input'
 import Button from './ui/button/Button.vue';
+import Textarea from './ui/textarea/Textarea.vue';
+// import FormDescription from './ui/form/FormDescription.vue';
 
 const formSchema = toTypedSchema(z.object({
   name: z.string().min(2).max(50),
-  email: z.string().email('Must be a valid email').max(20)
+  email: z.string().email('Must be a valid email').max(28),
+  textarea: z.string().min(10, { message: 'Must be at least 10 characters' }).max(160, { message: 'Must not be more than 160 characters' })
 }))
 
 function onSubmit(values: {}) {
@@ -61,6 +64,7 @@ function onSubmit(values: {}) {
                     <FormControl>
                         <Input placeholder="Alogbe Racheal" v-bind="componentField" class="w-38"/>
                     </FormControl>
+                    <FormDescription />
                     <FormMessage />
                     </FormItem>
                 </FormField>
@@ -70,6 +74,17 @@ function onSubmit(values: {}) {
                     <FormControl>
                         <Input placeholder="John@gmail.com" v-bind="componentField" class="w-38"/>
                     </FormControl>
+                    <FormDescription />
+                    <FormMessage />
+                    </FormItem>
+                </FormField>
+                <FormField v-slot="{ componentField }" name="textarea">
+                    <FormItem>
+                    <FormLabel>Message</FormLabel>
+                    <FormControl>
+                        <Textarea placeholder="Tell us a little joke" v-bind="componentField"/>
+                    </FormControl>
+                    <FormDescription />
                     <FormMessage />
                     </FormItem>
                 </FormField>
