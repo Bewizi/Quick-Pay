@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <Button :class="defaultClass || 'bg-[#0045A5] text-white hover:bg-[#0045A5]/90 rounded-full font-bold'">
+  <Button :class="defaultClass || 'bg-[#0045A5] text-white hover:bg-[#0045A5]/90 rounded-full font-bold px-8 '">
     <slot/>
   </Button>
 </template>
