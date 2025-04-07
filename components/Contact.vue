@@ -17,7 +17,7 @@ import Textarea from './ui/textarea/Textarea.vue';
 
 const formSchema = toTypedSchema(z.object({
   name: z.string().min(2).max(50),
-  email: z.string().email('Must be a valid email').max(28),
+  email: z.string().email('Must be a valid email').max(254),
   textarea: z.string().min(10, { message: 'Must be at least 10 characters' }).max(160, { message: 'Must not be more than 160 characters' })
 }))
 
