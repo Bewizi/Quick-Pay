@@ -5,12 +5,12 @@ import {AlignCenterIcon, X} from "lucide-vue-next";
 
 // ALL HEADER LINKS
 const links = reactive<NavLinks[]>([
-  {id: 1, name: "Home", href: "/"},
-  {id: 2, name: "Features", href: "#"},
-  {id: 3, name: "About Us", href: "#"},
-  {id: 4, name: "How it works", href: "#"},
-  {id: 5, name: "FAQS", href: "#"},
-  {id: 6, name: "Contact Us", href: "#"},
+  {id: 1, name: "Home", path: "/"},
+  {id: 2, name: "Features", path: "#"},
+  {id: 3, name: "About Us", path: "#"},
+  {id: 4, name: "How it works", path: "#"},
+  {id: 5, name: "FAQS", path: "#"},
+  {id: 6, name: "Contact Us", path: "#"},
 ]);
 
 // ACTIVE LINK INDICATING WHICH LINK IS ACTIVE
@@ -40,7 +40,7 @@ const toggleVisibility = () => (visibility.value = !visibility.value);
                 :class="
                 activeLink === link.name ? 'text-[#0045A5] font-bold' : ''
               "
-                :to="link.href"
+                :to="link.path"
                 class="hover:text-[#0045A5]"
                 @click="activeLink = link.name"
             >
@@ -57,13 +57,16 @@ const toggleVisibility = () => (visibility.value = !visibility.value);
 
       <!--      REGISTRATION -->
       <div class="hidden items-center gap-4 lg:flex">
-        <GenButton
-            class="border-2 border-blue-500 bg-transparent text-[#0045A5] hover:bg-transparent"
-        >
-          Login
-        </GenButton>
-        <GenButton>Register</GenButton>
-        <!--        <GenButton defaultClass="">Bus</GenButton>-->
+        <NuxtLink to="/login">
+          <GenButton
+              class="border-2 border-blue-500 bg-transparent text-[#0045A5] hover:bg-transparent"
+          >
+            Login
+          </GenButton>
+        </NuxtLink>
+        <NuxtLink to="/register">
+          <GenButton>Register</GenButton>
+        </NuxtLink>
       </div>
 
       <!--      FOR MOBILE SCREEN MENU BAR AND CLOSE -->
@@ -76,13 +79,13 @@ const toggleVisibility = () => (visibility.value = !visibility.value);
     <!--      NAV LINK MOBILE-->
     <nav
         v-if="visibility"
-        class="lg:hidden fixed w-full left-0  h-screen bg-white/50 z-50 flex flex-col items-center justify-center gap-8"
+        class="lg:hidden fixed w-full left-0 h-screen bg-white/50 z-50 flex flex-col items-center justify-center gap-8"
     >
       <ul class="flex flex-col items-center gap-8">
         <li v-for="link in links" :key="link.id">
           <NuxtLink
               :class="activeLink === link.name ? 'text-[#0045A5] font-bold' : ''"
-              :to="link.href"
+              :to="link.path"
               class="hover:text-[#0045A5]"
               @click="activeLink = link.name"
           >
